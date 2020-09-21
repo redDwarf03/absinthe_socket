@@ -77,13 +77,13 @@ class AbsintheSocket {
         _createPushHandler(unsubscriptionHandler, notifier));
   }
 
-  Notifier send(GqlRequest request, String notifierKey) {
+  Notifier send(GqlRequest request, String notifierKey, {Observer observer}) {
     if (_notifiers.containsKey(notifierKey)) {
       _pushRequest(_notifiers[notifierKey]);
       return _notifiers[notifierKey];
     }
 
-    Notifier notifier = Notifier(request: request);
+    Notifier notifier = Notifier(request: request, observer: observer);
 
     _notifiers[notifierKey] = notifier;
 
