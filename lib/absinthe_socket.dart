@@ -18,11 +18,11 @@ class AbsintheSocket {
     print(response.toString());
   }
 
-  static _onSubscriptionSucceed(Notifier notifier) {
-    return (Map response) {
+  static Function(Map?) _onSubscriptionSucceed(Notifier notifier) {
+    return (Map? response) {
       print("response");
       print(response.toString());
-      notifier.subscriptionId = response["subscriptionId"];
+      notifier.subscriptionId = response?["subscriptionId"];
     };
   }
 
@@ -166,7 +166,7 @@ class Notifier<Result> {
   Notifier({required this.request, this.observer});
 
   void observe(Observer<Result> theObserver) => observer = theObserver;
-  void notify(Map result) => observer?.onResult(result);
+  void notify(Map? result) => observer?.onResult(result);
   void cancel() => observer?.onCancel();
 }
 
