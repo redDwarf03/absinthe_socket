@@ -9,4 +9,7 @@ environment:
 
 dependencies:
   # Talk to phoenix channels
-  phoenix_wings: ^1.0.2
+  phoenix_wings: 
+    git:
+      url: https://github.com/redDwarf03/phoenix_wings.git
+      ref: master
